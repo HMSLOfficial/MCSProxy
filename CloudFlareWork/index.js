@@ -30,6 +30,8 @@ const mavenNeoforgedRegex = /^(https?:\/\/)?maven\.neoforged\.net(?:\/.*)?$/;
 const mavenQuiltmcRegex = /^(https?:\/\/)?maven\.quiltmc\.org(?:\/.*)?$/;  
 const metaQuiltmcRegex = /^(https?:\/\/)?meta\.quiltmc\.org(?:\/.*)?$/;  
 const pistonMetaMojangRegex = /^(https?:\/\/)?piston-meta\.mojang\.com(?:\/.*)?$/;  
+const pistonDataMojangRegex = /^(https?:\/\/)?piston-data\.mojang\.com(?:\/.*)?$/;  
+
 
 /**
  * @param {any} body
@@ -62,7 +64,7 @@ addEventListener('fetch', e => {
 
 
 function checkUrl(u) {
-    for (let i of [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex]) {
+    for (let i of [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex , pistonDataMojangRegex]) {
         if (u.search(i) === 0) {
             return true
         }
@@ -81,7 +83,7 @@ async function fetchHandler(e) {
     // cfworker 会把路径中的 `//` 合并成 `/`
     path = urlObj.href.slice(urlObj.origin.length + PREFIX.length).replace(/^\w+?:\/\/+/, '');  
     //定义正则表达式数组
-    const regexArray = [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex];  
+    const regexArray = [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex, pistonDataMojangRegex];  
       
     // 检查path是否与正则表达式数组中的任意一个匹配  
     let isMatched = regexArray.some(regex => regex.test(path));  
