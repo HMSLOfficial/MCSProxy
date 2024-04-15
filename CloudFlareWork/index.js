@@ -35,6 +35,7 @@ const dlAPISpongeRegex = /^(https?:\/\/)?dl-api\.spongepowered\.org(?:\/.*)?$/;
 const repoSpongeRegex = /^(https?:\/\/)?repo\.spongepowered\.org(?:\/.*)?$/;  
 const mohistRegex = /^(https?:\/\/)?mohistmc\.com(?:\/.*)?$/;  
 const pufferfishRegex = /^(https?:\/\/)?ci\.pufferfish\.host(?:\/.*)?$/;  
+const md5mcRegex = /^(https?:\/\/)?ci\.md-5\.net(?:\/.*)?$/;  
 
 
 /**
@@ -68,7 +69,7 @@ addEventListener('fetch', e => {
 
 
 function checkUrl(u) {
-    for (let i of [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex , pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex]) {
+    for (let i of [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex , pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex, md5mcRegex]) {
         if (u.search(i) === 0) {
             return true
         }
@@ -87,7 +88,7 @@ async function fetchHandler(e) {
     // cfworker 会把路径中的 `//` 合并成 `/`
     path = urlObj.href.slice(urlObj.origin.length + PREFIX.length).replace(/^\w+?:\/\/+/, '');  
     //定义正则表达式数组
-    const regexArray = [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex, pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex];  
+    const regexArray = [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex, pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex, md5mcRegex];  
       
     // 检查path是否与正则表达式数组中的任意一个匹配  
     let isMatched = regexArray.some(regex => regex.test(path));  
