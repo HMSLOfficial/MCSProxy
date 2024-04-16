@@ -38,9 +38,9 @@ const pufferfishRegex = /^(https?:\/\/)?ci\.pufferfish\.host(?:\/.*)?$/;
 const md5mcRegex = /^(https?:\/\/)?ci\.md-5\.net(?:\/.*)?$/;  
 const DownloadGetbukkitRegex = /^(https?:\/\/)?download\.getbukkit\.org(?:\/.*)?$/;  
 const CdnGetbukkitRegex = /^(https?:\/\/)?cdn\.getbukkit\.org(?:\/.*)?$/;  
-const ApiMultpaperRegex = /^(https?:\/\/)?/api\.multipaper\.io(?:\/.*)?$/;  
+const ApiMultpaperRegex = /^(https?:\/\/)?api\.multipaper\.io(?:\/.*)?$/;
 const loohpjamesRegex = /^(https?:\/\/)?ci\.loohpjames\.com(?:\/.*)?$/;  
-const cuberiteRegex = /^(https?:\/\/)?download\.cuberite\.org(?:\/.*)?$/;  
+const opencollabRegex = /^(https?:\/\/)?ci\.opencollab\.dev(?:\/.*)?$/;  
 
 
 /**
@@ -74,7 +74,7 @@ addEventListener('fetch', e => {
 
 
 function checkUrl(u) {
-    for (let i of [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex , pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex, md5mcRegex, DownloadGetbukkitRegex, CdnGetbukkitRegex, ApiMultpaperRegex, loohpjamesRegex, cuberiteRegex]) {
+    for (let i of [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex , pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex, md5mcRegex, DownloadGetbukkitRegex, CdnGetbukkitRegex, ApiMultpaperRegex, loohpjamesRegex, opencollabRegex]) {
         if (u.search(i) === 0) {
             return true
         }
@@ -93,7 +93,7 @@ async function fetchHandler(e) {
     // cfworker 会把路径中的 `//` 合并成 `/`
     path = urlObj.href.slice(urlObj.origin.length + PREFIX.length).replace(/^\w+?:\/\/+/, '');  
     //定义正则表达式数组
-    const regexArray = [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex, pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex, md5mcRegex, DownloadGetbukkitRegex, CdnGetbukkitRegex, ApiMultpaperRegex, loohpjamesRegex, cuberiteRegex];  
+    const regexArray = [launcherMetaMojangRegex, launcherMojangRegex, resourcesDownloadMinecraftRegex, librariesMinecraftRegex, filesMinecraftForgeRegex, dlLiteloaderRegex, authlibInjectorYushiRegex, metaFabricmcRegex, mavenFabricmcRegex, mavenNeoforgedRegex, mavenQuiltmcRegex, metaQuiltmcRegex,pistonMetaMojangRegex, pistonDataMojangRegex, dlAPISpongeRegex, repoSpongeRegex, mohistRegex, pufferfishRegex, md5mcRegex, DownloadGetbukkitRegex, CdnGetbukkitRegex, ApiMultpaperRegex, loohpjamesRegex, opencollabRegex];  
       
     // 检查path是否与正则表达式数组中的任意一个匹配  
     let isMatched = regexArray.some(regex => regex.test(path));  
